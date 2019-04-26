@@ -52,6 +52,8 @@ export default class ScheduleScreen extends Component{
                 scrollEnabled={true}
                 // Enable or disable vertical scroll indicator. Default = false
                 showScrollIndicator={true}
+                // Handler which gets executed on day press. Default = undefined
+                onDayPress={(day) => {alert(day.dateString +"                   "+day.timestamp)}}
 
                 markingType={'multi-dot'}
                 
