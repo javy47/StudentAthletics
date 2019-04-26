@@ -2,8 +2,16 @@
 import React, {Component} from 'react';
 import {AppRegistry, StyleSheet, Text, View, Image, TouchableWithoutFeedback, StatusBar, TextInput,
   SafeAreaView, Keyboard, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
-import {createStackNavigator, createAppContainer} from 'react-navigation';
+// import {createStackNavigator, createAppContainer} from 'react-navigation';
+import {createStackNavigator, createAppContainer, createDrawerNavigator, createSwitchNavigator} from 'react-navigation';
 
+import {Platform, Dimensions} from 'react-native';
+import ProfileScreen from './ProfileScreen';  
+import SettingScreen from './SettingScreen';
+
+
+
+const WIDTH = Dimensions.get('window');
 
 export default class HomePage extends Component{
     render(){
@@ -11,7 +19,7 @@ export default class HomePage extends Component{
         uri: 'https://www.ithaca.edu/css/cs/marcom/templates/IC-2L-Left-White.png'
     };
       return(
-        // <Application />
+        
         <SafeAreaView style={styles.container}>
             <StatusBar backgroundColor='#003B71' barStyle='light-content'/>
               <TouchableWithoutFeedback style={styles.container} onPress={Keyboard.dismiss}>
@@ -23,30 +31,10 @@ export default class HomePage extends Component{
                       </Image>
                       <Text style= {styles.title}>Student Athletes</Text>
                   </View>
-                  <View style={styles.infoContainer}>
-                      <TextInput style={styles.input}
-                          placeholder="Enter username/email"
-                          placeholderTextColor= 'rgba(255,255,255,.8)'
-                          keyboardType='email-address'
-                          returnKeyType='next'
-                          autoCorrect={false}
-                          onSubmitEditing={()=> this.refs.txtPassword.focus()}
-                      
-                      />
-                      <TextInput style={styles.input} 
-                        placeholder="Enter password"
-                        placeholderTextColor= 'rgba(255,255,255,.8)'
-                        returnKeyType='go'
-                        secureTextEntry={true}
-                        ref={'txtPassword'} 
-                                            
-                      />
-                      <TouchableOpacity style={styles.buttonContainer}>
-                          <Text style={styles.buttonText}> SIGN IN</Text>
-                      </TouchableOpacity>
-
-                  </View>
-                      <Text style={styles.register}>Not a member? Sign up now, </Text>
+                  <Text onPress = {() => this.props.navigation.navigate('Schedule')}>Schedule page</Text>
+                  
+                  
+                    
                 </View>
             </TouchableWithoutFeedback>
         </SafeAreaView>
@@ -54,11 +42,18 @@ export default class HomePage extends Component{
       );
     }
 }
+
+
+
+
+
+
+
 const styles= StyleSheet.create({
     container: {
       flex: 1,
       flexDirection: 'column',    
-      backgroundColor: '#003B71',
+      backgroundColor: '#9C9C9C',
     },
     logoContainer: { 
       alignItems: 'center',

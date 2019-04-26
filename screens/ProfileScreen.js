@@ -5,7 +5,7 @@ import {AppRegistry, StyleSheet, Text, View, Image, TouchableWithoutFeedback, St
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 
 
-export default class SignUp extends Component{
+export default class ProfileScreen extends Component{
     render(){
       let IClogo ={
         uri: 'https://www.ithaca.edu/css/cs/marcom/templates/IC-2L-Left-White.png'
