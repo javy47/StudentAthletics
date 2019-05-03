@@ -31,7 +31,7 @@ export default class HomePage extends Component{
                       </Image>
                       <Text style= {styles.title}>Student Athletes</Text>
                   </View>
-                  <Text onPress = {() => this.props.navigation.navigate('Schedule')}>Schedule page</Text>
+                  <Text onPress = {() => this.props.navigation.navigate('Schedulegit')}>Schedule page</Text>
                   
                   
                     

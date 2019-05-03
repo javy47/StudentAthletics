@@ -1,12 +1,21 @@
 
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View, Image, TouchableWithoutFeedback, StatusBar, TextInput,
+import { Modal,  TouchableHighlight, StyleSheet, Text, View, Image, TouchableWithoutFeedback, StatusBar, TextInput,
   SafeAreaView, Keyboard, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 import  {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 
 
 export default class ScheduleScreen extends Component{
+
+    state = {
+      modalVisible: false,
+    }
+
+    setModalVisible(visible){
+      this.setState({modalVisible: visible});
+    }
+  
     render(){
       let IClogo ={
         uri: 'https://www.ithaca.edu/css/cs/marcom/templates/IC-2L-Left-White.png'
@@ -53,11 +62,62 @@ export default class ScheduleScreen extends Component{
                 // Enable or disable vertical scroll indicator. Default = false
                 showScrollIndicator={true}
                 // Handler which gets executed on day press. Default = undefined
-                onDayPress={(day) => {alert(day.dateString +"                   "+day.timestamp)}}
+                //onDayPress={(day) => {alert(day.dateString +"                   "+day.timestamp)}}
+                onDayPress={(day) => {this.setModalVisible(true)}}
 
                 markingType={'multi-dot'}
                 
                 />
+                <Modal
+                animationType="slide"
+                transparent={false}
+                visible={this.state.modalVisible}
+                onRequestClose={() => {
+                  Alert.alert('Modal has been closed.');
+                }}>
+                      <View style= {styles.modalScheme} >
+                      <View >
+                        <Text style= {styles.modalContent}>Set Reminder</Text>
+                        <TextInput style={styles.input}
+                          placeholder="Select Your Sport"
+                          placeholderTextColor= 'rgba(255,255,255,.8)'
+                          keyboardType='email-address'
+                          returnKeyType='next'
+                          autoCorrect={false}
+                          ref={'txtSport'} 
+                          onSubmitEditing={()=> this.refs.txtPassword.focus()}
+                      
+                      />
+                      <TextInput style={styles.input} 
+                        placeholder="Enter Password"
+                        placeholderTextColor= 'rgba(255,255,255,.8)'
+                        returnKeyType='go'
+                        secureTextEntry={true}
+                        ref={'txtPassword'}
+                        onSubmitEditing={()=> this.refs.txtPasswordAgain.focus()} 
+                                            
+                      />
+                      <TextInput style={styles.input} 
+                        placeholder="Enter Password Again"
+                        placeholderTextColor= 'rgba(255,255,255,.8)'
+                        returnKeyType='go'
+                        secureTextEntry={true}
+                        ref={'txtPasswordAgain'} 
+                                            
+                      />
+
+
+                        <TouchableHighlight
+                          onPress={() => {
+                            this.setModalVisible(!this.state.modalVisible);
+                          }}>
+                          <Text>Hide Modal</Text>
+                        </TouchableHighlight>
+                      </View>
+                     </View>
+
+
+                </Modal>
                      
                 </View>
             </TouchableWithoutFeedback>
@@ -67,6 +127,20 @@ export default class ScheduleScreen extends Component{
     }
 }
 const styles= StyleSheet.create({
+    modalScheme: {
+      backgroundColor: '#FFBB00',
+      justifyContent: 'center',
+      flex: 1,
+      
+
+    },
+    modalContent:{
+      color: 'white',
+      textAlign: 'center',
+      fontSize: 18,
+
+
+    },
     container: {
       flex: 1,
       flexDirection: 'column',    

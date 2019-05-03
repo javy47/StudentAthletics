@@ -6,6 +6,8 @@ import {createStackNavigator, createAppContainer} from 'react-navigation';
 
 
 export default class SignIn extends Component{
+
+    
     render(){
       let IClogo ={
         uri: 'https://www.ithaca.edu/css/cs/marcom/templates/IC-2L-Left-White.png'

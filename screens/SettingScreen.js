@@ -24,67 +24,7 @@ export default class SettingScreen extends Component{
                       
                   </View>
                   <View style={styles.infoContainer}>
-                      <TextInput style={styles.input}
-                          placeholder="Enter Email"
-                          placeholderTextColor= 'rgba(255,255,255,.8)'
-                          keyboardType='email-address'
-                          returnKeyType='next'
-                          autoCorrect={false}
-                          ref={'txtEmail'} 
-                          onSubmitEditing={()=> this.refs.txtFirstName.focus()}
                       
-                      />
-                      <TextInput style={styles.input}
-                          placeholder="Enter First Name"
-                          placeholderTextColor= 'rgba(255,255,255,.8)'
-                          keyboardType='email-address'
-                          returnKeyType='next'
-                          autoCorrect={false}
-                          ref={'txtFirstName'} 
-                          onSubmitEditing={()=> this.refs.txtLastName.focus()}
-                      
-                      />
-                        <TextInput style={styles.input}
-                          placeholder="Enter Last Name"
-                          placeholderTextColor= 'rgba(255,255,255,.8)'
-                          keyboardType='email-address'
-                          returnKeyType='next'
-                          autoCorrect={false}
-                          ref={'txtLastName'} 
-                          onSubmitEditing={()=> this.refs.txtSport.focus()}
-                      
-                      />
-                      <TextInput style={styles.input}
-                          placeholder="Select Your Sport"
-                          placeholderTextColor= 'rgba(255,255,255,.8)'
-                          keyboardType='email-address'
-                          returnKeyType='next'
-                          autoCorrect={false}
-                          ref={'txtSport'} 
-                          onSubmitEditing={()=> this.refs.txtPassword.focus()}
-                      
-                      />
-                      <TextInput style={styles.input} 
-                        placeholder="Enter Password"
-                        placeholderTextColor= 'rgba(255,255,255,.8)'
-                        returnKeyType='go'
-                        secureTextEntry={true}
-                        ref={'txtPassword'}
-                        onSubmitEditing={()=> this.refs.txtPasswordAgain.focus()} 
-                                            
-                      />
-                      <TextInput style={styles.input} 
-                        placeholder="Enter Password Again"
-                        placeholderTextColor= 'rgba(255,255,255,.8)'
-                        returnKeyType='go'
-                        secureTextEntry={true}
-                        ref={'txtPasswordAgain'} 
-                                            
-                      />
-                    
-                      <TouchableOpacity style={styles.buttonContainer}>
-                          <Text style={styles.buttonText} onPress = {() => this.props.navigation.navigate('Home')}> CREATE ACCOUNT</Text>
-                      </TouchableOpacity>
 
                   </View>
                      
