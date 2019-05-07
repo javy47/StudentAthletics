@@ -4,6 +4,9 @@ import {AppRegistry, StyleSheet, Text, View, Image, TouchableWithoutFeedback, St
   SafeAreaView, Keyboard, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 import {createStackNavigator, createAppContainer, createDrawerNavigator, createSwitchNavigator, createBottomTabNavigator} from 'react-navigation';
 // import {Icon} from 'react-native-elements'
+import * as firebase from 'firebase';
+
+
 
 
 import SignUp from  './screens/SignUp';
@@ -16,6 +19,15 @@ import PostScreen from './screens/PostScreen';
 import PreScreen from './screens/PreScreen';
 
 
+const firebaseConfig = {
+    apiKey: "AIzaSyBihnv9fE_oflIKVDod_Tz3xi8PxYkwL04",
+    authDomain: "react-native-firebase-b4a9e.firebaseapp.com",
+    databaseURL: "https://react-native-firebase-b4a9e.firebaseio.com",
+    projectId: "react-native-firebase-b4a9e",
+    storageBucket: "react-native-firebase-b4a9e.appspot.com",
+};
+
+firebase.initializeApp(firebaseConfig)
 
 const DismissKeyboard = ({children}) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>

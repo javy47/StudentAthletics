@@ -1,8 +1,22 @@
 
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View, Image, Button, TouchableWithoutFeedback, StatusBar, TextInput,
+import {AppRegistry, StyleSheet, Text, View, Image, Button, TouchableWithoutFeedback, StatusBar, TextInput, console,
    Keyboard, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
+import * as firebase from 'firebase';
+
+
+
+
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBihnv9fE_oflIKVDod_Tz3xi8PxYkwL04",
+//   authDomain: "react-native-firebase-b4a9e.firebaseapp.com",
+//   databaseURL: "https://react-native-firebase-b4a9e.firebaseio.com",
+//   projectId: "react-native-firebase-b4a9e",
+//   storageBucket: "react-native-firebase-b4a9e.appspot.com",
+// };
+
+// firebase.initializeApp(firebaseConfig)
 
 
 export default class SignIn extends Component{
@@ -14,9 +28,20 @@ export default class SignIn extends Component{
           password: ' '
       }
     }
-    userSignIn = () =>{
-        alert('login successful')
+    userSignIn = (username, password) =>{
+      try{
+        firebase.auth().signInWithEmailAndPassword(username, password)
         this.props.navigation.navigate('Home')
+
+       
+        }
+      catch(error){
+          console.log(error.toString())
+        
+          
+      }
+        
+        
 
     }
 
@@ -45,7 +70,9 @@ export default class SignIn extends Component{
                           keyboardType='email-address'
                           returnKeyType='next'
                           autoCorrect={false}
+                          onChangeText={(userName) => this.setState({userName})}
                           onSubmitEditing={()=> this.refs.txtPassword.focus()}
+                          
                       
                       />
                       <TextInput style={styles.input} 
@@ -53,11 +80,12 @@ export default class SignIn extends Component{
                         placeholderTextColor= 'rgba(255,255,255,.8)'
                         returnKeyType='go'
                         secureTextEntry={true}
+                        onChangeText={(password) => this.setState({password})}
                         ref={'txtPassword'} 
                                             
                       />
                       <TouchableOpacity style={styles.buttonContainer}>
-                          <Text style={styles.buttonText } onPress = {this.userSignIn}> SIGN IN</Text>
+                          <Text style={styles.buttonText } onPress = {() => this.userSignIn(this.state.userName, this.state.password)}> SIGN IN</Text>
                       </TouchableOpacity>
 
                   </View>
