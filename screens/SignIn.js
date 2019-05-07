@@ -1,11 +1,24 @@
 
 import React, {Component} from 'react';
 import {AppRegistry, StyleSheet, Text, View, Image, Button, TouchableWithoutFeedback, StatusBar, TextInput,
-  SafeAreaView, Keyboard, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
+   Keyboard, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 
 
 export default class SignIn extends Component{
+
+    constructor(props){
+      super(props)
+      this.state={
+          userName: ' ',
+          password: ' '
+      }
+    }
+    userSignIn = () =>{
+        alert('login successful')
+        this.props.navigation.navigate('Home')
+
+    }
 
     
     render(){
@@ -14,8 +27,8 @@ export default class SignIn extends Component{
     };
       return(
         
-        <SafeAreaView style={styles.container}>
-            <StatusBar backgroundColor='#003B71' barStyle='dark-content'/>
+        
+            
               <TouchableWithoutFeedback style={styles.container} onPress={Keyboard.dismiss}>
 
                 <View style= {styles.container} >
@@ -44,7 +57,7 @@ export default class SignIn extends Component{
                                             
                       />
                       <TouchableOpacity style={styles.buttonContainer}>
-                          <Text style={styles.buttonText } onPress = {() => this.props.navigation.navigate('Home')}> SIGN IN</Text>
+                          <Text style={styles.buttonText } onPress = {this.userSignIn}> SIGN IN</Text>
                       </TouchableOpacity>
 
                   </View>
@@ -52,7 +65,7 @@ export default class SignIn extends Component{
                       <Text style={styles.register}  onPress = {() => this.props.navigation.navigate('Register')}>Not a member? Sign up now, </Text>
                 </View>
             </TouchableWithoutFeedback>
-        </SafeAreaView>
+      
        
       );
     }

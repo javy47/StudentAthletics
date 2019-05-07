@@ -4,7 +4,16 @@ import { Modal,  TouchableHighlight, StyleSheet, Text, View, Image, TouchableWit
   SafeAreaView, Keyboard, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 import  {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import {Dropdown} from 'react-native-material-dropdown';
+import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 
+
+const DismissKeyboard = ({children}) => (
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
+
+);
 
 export default class ScheduleScreen extends Component{
 
@@ -17,13 +26,18 @@ export default class ScheduleScreen extends Component{
     }
   
     render(){
+      let data = [{
+        value: 'AM',
+      },{
+        value: 'PM',
+      }];
+
       let IClogo ={
         uri: 'https://www.ithaca.edu/css/cs/marcom/templates/IC-2L-Left-White.png'
     };
       return(
         // <Application />
-        <SafeAreaView style={styles.container}>
-            <StatusBar backgroundColor='#003B71' barStyle='light-content'/>
+        
               <TouchableWithoutFeedback style={styles.container} onPress={Keyboard.dismiss}>
 
                 <View  >
@@ -68,6 +82,7 @@ export default class ScheduleScreen extends Component{
                 markingType={'multi-dot'}
                 
                 />
+                <DismissKeyboard>
                 <Modal
                 animationType="slide"
                 transparent={false}
@@ -78,33 +93,18 @@ export default class ScheduleScreen extends Component{
                       <View style= {styles.modalScheme} >
                       <View >
                         <Text style= {styles.modalContent}>Set Reminder</Text>
-                        <TextInput style={styles.input}
-                          placeholder="Select Your Sport"
-                          placeholderTextColor= 'rgba(255,255,255,.8)'
-                          keyboardType='email-address'
-                          returnKeyType='next'
-                          autoCorrect={false}
-                          ref={'txtSport'} 
-                          onSubmitEditing={()=> this.refs.txtPassword.focus()}
-                      
-                      />
-                      <TextInput style={styles.input} 
-                        placeholder="Enter Password"
-                        placeholderTextColor= 'rgba(255,255,255,.8)'
-                        returnKeyType='go'
-                        secureTextEntry={true}
-                        ref={'txtPassword'}
-                        onSubmitEditing={()=> this.refs.txtPasswordAgain.focus()} 
-                                            
-                      />
-                      <TextInput style={styles.input} 
-                        placeholder="Enter Password Again"
-                        placeholderTextColor= 'rgba(255,255,255,.8)'
-                        returnKeyType='go'
-                        secureTextEntry={true}
-                        ref={'txtPasswordAgain'} 
-                                            
-                      />
+                          <View style= {styles.modalOptions}>
+                              <Dropdown
+                            label= 'Time'
+                            data={data} />
+
+                          </View>
+                          <View style= {styles.move}>
+                            <AutoGrowingTextInput style={styles.input} placeholder={'Your Message'} />
+                          </View>
+                          
+                       
+                                         
 
 
                         <TouchableHighlight
@@ -118,15 +118,30 @@ export default class ScheduleScreen extends Component{
 
 
                 </Modal>
+                </DismissKeyboard>
                      
                 </View>
             </TouchableWithoutFeedback>
-        </SafeAreaView>
+       
        
       );
     }
 }
 const styles= StyleSheet.create({
+    move:{
+      
+      left:30,
+      top: 100,
+      position: "absolute",
+
+    },
+    modalOptions:{
+        height: 100,
+        width: 100,
+        
+        position:'absolute',
+        right: 50,
+    },
     modalScheme: {
       backgroundColor: '#FFBB00',
       justifyContent: 'center',
@@ -138,6 +153,7 @@ const styles= StyleSheet.create({
       color: 'white',
       textAlign: 'center',
       fontSize: 18,
+      bottom: 250,
 
 
     },
@@ -172,12 +188,14 @@ const styles= StyleSheet.create({
       // backgroundColor: 'red',
     },
     input: {
-      height: 40,
+      height: 100,
+      width: 250,
       backgroundColor: 'rgba(255,255,255,.2)',
       color:'#FFFFFF',
       marginBottom: 20,
       paddingHorizontal: 10,
-      justifyContent: 'center'
+      height: 100,
+      
   
     },
     buttonContainer: {

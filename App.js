@@ -12,14 +12,24 @@ import HomePage from './screens/HomePage';
 import ProfileScreen from './screens/ProfileScreen';  
 import SettingScreen from './screens/SettingScreen';
 import ScheduleScreen from './screens/ScheduleScreen';
+import PostScreen from './screens/PostScreen';
+import PreScreen from './screens/PreScreen';
 
 
 
+const DismissKeyboard = ({children}) => (
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
 
+);
 export class seniorproject extends Component{
   render(){
       return(
-          <App />
+        <DismissKeyboard>
+            <App />
+        </DismissKeyboard>
+        
       );
   }
 }
@@ -30,19 +40,22 @@ export class seniorproject extends Component{
 // })
 
 
-// const AppStackNavigator = createStackNavigator({
-//   Login : {screen: SignIn},
-//   Register : SignUp,
-//   tabs : Tabs,
-//   Schedule: ScheduleScreen,
-// },
-//   {headerMode: 'none'
-// });
+const Home = createStackNavigator({
+  Home : HomePage,
+  Post: PostScreen,
+  Pre: PreScreen,
+  // Login : {screen: SignIn},
+  // Register : SignUp,
+  // Schedule: ScheduleScreen,
+},
+  {headerMode: 'none'
+});
 
 let Tabs = createBottomTabNavigator({
+  
   Login : SignIn,
   Register : SignUp,
-  Home : HomePage,
+  Home,
   Schedule: ScheduleScreen,
     
 
