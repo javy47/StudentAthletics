@@ -5,7 +5,7 @@ import {
   SafeAreaView, Button, TouchableOpacity
 } from 'react-native';
 // import {createStackNavigator, createAppContainer} from 'react-navigation';
-import { createStackNavigator, createAppContainer, createDrawerNavigator, createSwitchNavigator } from 'react-navigation';
+
 
 import { Platform, Dimensions } from 'react-native';
 import ProfileScreen from './ProfileScreen';

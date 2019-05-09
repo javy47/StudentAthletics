@@ -30,7 +30,7 @@ export default class PostScreen extends Component {
         <Image style={styles.logo}
         source={{ uri: item.image }} />
         <View style={{flex: 1,justifyContent: 'center', backgroundColor: '#003B71', }}>
-          <Text style={ {color: '#FFBB00', fontSize: 18,fontWeight: 'bold' } }> {item.Food}</Text>
+          <Text style={ {color: '#FFBB00', fontSize: 18,fontWeight: 'bold' } } onPress={() => alert("Ingredients Page for  \n"+item.Food)}> {item.Food}</Text>
           <Text style={ styles.text  }> Calories:{item.Calories}</Text>
           <Text style={ styles.text  }> Fat:{item.Fat}</Text>
           <Text style={ styles.text  }> Protein:{item.Protein}</Text>
