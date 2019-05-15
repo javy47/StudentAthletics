@@ -1,22 +1,13 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry, StyleSheet, Text, View, Image, TouchableWithoutFeedback, StatusBar, TextInput,
-  SafeAreaView, Button, TouchableOpacity
+   StyleSheet, Text, View, Image, TouchableOpacity
 } from 'react-native';
-// import {createStackNavigator, createAppContainer} from 'react-navigation';
-
-
 import { Platform, Dimensions } from 'react-native';
-import ProfileScreen from './ProfileScreen';
-import SettingScreen from './SettingScreen';
-import PostScreen from './PostScreen';
 
 
 
-
-const WIDTH = Dimensions.get('window');
-
+//In this function I am creating buttons that on click navigates the user to specific pages
 export default class HomePage extends Component {
 
   render() {
@@ -25,10 +16,10 @@ export default class HomePage extends Component {
     };
     return (
 
-
+      //This is the tag that i use to make the background of the page teh color '#003B71'
       <View style={{ alignItems: 'center', justifyContent: "center", flex: 1, backgroundColor: '#003B71' }}>
 
-        
+          
           <Image style={styles.logo}
             source={IClogo}>
           </Image>
@@ -56,7 +47,7 @@ export default class HomePage extends Component {
 
 
 
-
+//The stylesheet is used to make some aspect of the page different
 const styles = StyleSheet.create({
   row: {
     flex: 1, justifyContent: 'center', alignItems: 'center', padding: 15,
@@ -100,7 +91,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     padding: 20,
     height: 300,
-    // backgroundColor: 'red',
+    
   },
   input: {
     height: 40,

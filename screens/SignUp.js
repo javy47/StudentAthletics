@@ -1,13 +1,18 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry, StyleSheet, Text, View, Image, TouchableWithoutFeedback, StatusBar, TextInput,
-  SafeAreaView, Keyboard, TouchableOpacity, KeyboardAvoidingView
+   StyleSheet, Text, View, Image, TouchableWithoutFeedback, StatusBar, TextInput,
+  SafeAreaView, Keyboard, TouchableOpacity
 } from 'react-native';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+
 import * as firebase from 'firebase';
 
+/*
+  This class with variables that will store the information that a user enters during thier account registration.
+  This will then be passed to the firebase paltform and stored for later use.
+  Information such as username,password and comfirmation password to later compare the two.
 
+*/
 export default class SignUp extends Component {
   constructor(props) {
     super(props)
@@ -18,6 +23,7 @@ export default class SignUp extends Component {
     }
   }
 
+  //After a user has submitted their password this function is called to compare the two.
   userPasswordCheck = ( password, confirmPassword) => {
       if (password == confirmPassword){
             this.userRegister(this.state.userName, password)
@@ -28,6 +34,7 @@ export default class SignUp extends Component {
       }
   }
 
+  //After the passwords are confirmed to be the same this 
   userRegister = (username, password) => {
     try {
 
@@ -48,6 +55,7 @@ export default class SignUp extends Component {
 
 
   }
+  //The  code below renders a few textinput fields that the user has to fill out for thier user name and passwords
   render() {
     let IClogo = {
       uri: 'https://www.ithaca.edu/css/cs/marcom/templates/IC-2L-Left-White.png'

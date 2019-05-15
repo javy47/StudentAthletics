@@ -1,25 +1,24 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry, StyleSheet, Text, View, Image, TouchableWithoutFeedback, StatusBar, TextInput,
-  SafeAreaView, Keyboard, TouchableOpacity, KeyboardAvoidingView, FlatList, ActivityIndicator
+   StyleSheet, Text, View, Image, StatusBar,
+  SafeAreaView, FlatList, 
 } from 'react-native';
-// import {createStackNavigator, createAppContainer} from 'react-navigation';
-import { createStackNavigator, createAppContainer, createDrawerNavigator, createSwitchNavigator } from 'react-navigation';
-
-import { Platform, Dimensions } from 'react-native';
-import ProfileScreen from './ProfileScreen';
-import SettingScreen from './SettingScreen';
 
 
 
 
-const WIDTH = Dimensions.get('window');
+/*
+  With this function I was able to take the information from the Next.JSON site and store it in a list variable.
+  This information is then rendered intoText tags that were then displayed into a list. When a Food Name is clicked
+  then an alert messaege is produced that displays the nutritional information for that specific item.
 
+*/
 export default class PostScreen extends Component {
   constructor() {
     super()
     this.state = {
+      //Variable that stores the information from the website(NEXT.JSON)
       dataSource: []
     }
   }
@@ -42,6 +41,8 @@ export default class PostScreen extends Component {
 
 
   }
+
+  //A connection is established between the app and the next.json-generator.com site
   componentDidMount() {
     const url = 'https://next.json-generator.com/api/json/get/4yA-ZpFj8'
 

@@ -1,20 +1,15 @@
 
 import React, {Component} from 'react';
-import { Modal,  TouchableHighlight, StyleSheet, Text, View, Image, TouchableWithoutFeedback, StatusBar, TextInput,
-  SafeAreaView, Keyboard, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
-import {createStackNavigator, createAppContainer} from 'react-navigation';
+import { Modal,  TouchableHighlight, StyleSheet, Text, View, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import  {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import {Dropdown} from 'react-native-material-dropdown';
 import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 
 
-const DismissKeyboard = ({children}) => (
-  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-    {children}
-  </TouchableWithoutFeedback>
-
-);
-
+/*
+  This function contains the calendar that will be displayed and used to
+  create events that will later be used for push notifications
+*/
 export default class ScheduleScreen extends Component{
 
     state = {

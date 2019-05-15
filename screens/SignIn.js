@@ -18,7 +18,10 @@ import * as firebase from 'firebase';
 
 // firebase.initializeApp(firebaseConfig)
 
-
+/*
+  This class stores the values of the user name and passwords that will passed to
+  firebase to check for teh account. If not then the login attempt will fail.
+*/
 export default class SignIn extends Component{
 
     constructor(props){
